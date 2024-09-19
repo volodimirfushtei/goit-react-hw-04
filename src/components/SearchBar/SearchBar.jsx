@@ -3,20 +3,19 @@ import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 const SearchBar = ({ onSubmit, placeholder = "Search images and photos" }) => {
-  const [searchText, setSearchText] = useState("");
+  const [query, setQuery] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!searchText.trim()) {
-      // Покажіть сповіщення, якщо текстове поле порожнє
-      toast.error("Введіть текст для пошуку зображень.");
+    if (!query.trim()) {
+      toast.error("Введіть запит для пошуку");
       return;
     }
 
-    // Обробка пошукового запиту
-    console.log("Search text:", searchText);
-    if (onSubmit) onSubmit(searchText);
-    setSearchText("");
+    console.log("Search text:", query);
+
+    onSubmit(query);
+    setQuery("");
   };
 
   return (
@@ -28,15 +27,17 @@ const SearchBar = ({ onSubmit, placeholder = "Search images and photos" }) => {
             type="text"
             autoComplete="off"
             autoFocus
-            value={searchText}
+            value={query}
             placeholder={placeholder}
-            onChange={(e) => setSearchText(e.target.value)}
+            onChange={(e) => setQuery(e.target.value)}
+            aria-label="Search images"
           />
-          <button className={s.button} type="submit">
+          <button className={s.button} type="submit" aria-label="Search">
             Search
           </button>
         </form>
       </div>
+      <Toaster />
     </header>
   );
 };

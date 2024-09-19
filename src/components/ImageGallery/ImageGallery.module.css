@@ -2,10 +2,15 @@
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   margin-bottom: 20px;
   padding: 0;
   justify-content: center;
-  align-items: start;
+  align-items: center;
   width: 100%;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
 }
