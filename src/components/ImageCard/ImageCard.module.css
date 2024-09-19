@@ -34,3 +34,19 @@
 
   margin-bottom: 0;
 }
+.ImageCard_author {
+  margin-top: 5px;
+  color: #60383b;
+  font-size: var(--font-size-small);
+  line-height: 1.5;
+  text-align: center;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  &:hover {
+    color: #820610;
+  }
+  &:active {
+    color: #ef4e5b;
+  }
+  margin-bottom: 0;
+}

@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     const getData = async () => {
-      if (!query) return; // Don't fetch if there is no query
+      if (!query) return;
 
       setLoading(true);
       setError(null);
@@ -54,7 +54,11 @@ function App() {
       {loading && <Loader />}
       <ImageGallery images={images} />
       {!loading && images.length > 0 && (
-        <LoadMoreBtn onClick={handleChangePage} />
+        <LoadMoreBtn
+          onClick={handleChangePage}
+          isLoading={loading}
+          haveImages={images.length > 0}
+        />
       )}
     </>
   );

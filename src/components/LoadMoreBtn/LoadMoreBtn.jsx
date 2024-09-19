@@ -1,16 +1,36 @@
+import { useState } from "react";
 import s from "./LoadMoreBtn.module.css";
+import Loader from "../Loader/Loader";
 
-const LoadMoreBtn = ({ onClick }) => {
+const LoadMoreBtn = ({ onClick, isLoading, haveImages }) => {
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+
+  const handleClick = () => {
+    setIsLoadingMore(true); // Встановлюємо стан завантаження
+    setTimeout(() => {
+      onClick();
+      setIsLoadingMore(false); // Скидаємо стан завантаження
+    }, 2000);
+  };
+  // Показуємо кнопку лише якщо є зображення
+  if (!haveImages > 0) {
+    return null;
+  }
   return (
     <div className={s.container_button_loadmore}>
-      <button
-        className={s.button_loadmore}
-        type="submit"
-        name="button"
-        onClick={onClick}
-      >
-        Load more
-      </button>
+      {isLoading || isLoadingMore ? (
+        <div className={s.Loader}>
+          <Loader />
+        </div>
+      ) : (
+        <button
+          className={s.button_loadmore}
+          type="button"
+          onClick={handleClick}
+        >
+          Load more
+        </button>
+      )}
     </div>
   );
 };

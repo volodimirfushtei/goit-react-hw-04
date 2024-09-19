@@ -19,7 +19,7 @@ const SearchBar = ({ onSubmit, placeholder = "Search images and photos" }) => {
   };
 
   return (
-    <header>
+    <header className={s.header}>
       <div className={s.searchBar_container}>
         <form className={s.form} onSubmit={handleSubmit}>
           <input

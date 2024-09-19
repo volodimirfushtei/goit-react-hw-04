@@ -1,6 +1,6 @@
 import s from "./ImageCard.module.css";
 import { useState } from "react";
-import Loader from "../Loader/";
+import Loader from "../Loader/Loader";
 const ImageCard = ({ image }) => {
   const { urls, alt_description } = image;
   const [isLoading, setIsLoading] = useState(true);
@@ -16,8 +16,7 @@ const ImageCard = ({ image }) => {
         <div className={s.loader}>
           <Loader />
         </div>
-      )}{" "}
-      {/* Optional loader */}
+      )}
       <img
         className={s.image}
         src={hasError ? "/path/to/fallback-image.jpg" : urls.small} // Fallback image path
@@ -28,6 +27,9 @@ const ImageCard = ({ image }) => {
       />
       {alt_description && (
         <p className={s.ImageCard_description}>{alt_description}</p>
+      )}
+      {image.user && (
+        <p className={s.ImageCard_author}>Автор: {image.user.name}</p>
       )}
     </div>
   );
