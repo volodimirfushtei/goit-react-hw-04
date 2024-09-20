@@ -7,23 +7,29 @@ import ImageGallery from "./src/components/ImageGallery/ImageGallery";
 import Loader from "./src/components/Loader/Loader";
 import ErrorMessage from "./src/components/ErrorMessage/ErrorMessage";
 import { fetchImages } from "./src/servises/api.js";
-
+import ImageModal from "./src/components/ImageModal/ImageModal";
 function App() {
   const [images, setImages] = useState([]);
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [totalPages, setTotalPages] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
   useEffect(() => {
     const getData = async () => {
       if (!query) return;
 
       setLoading(true);
+      setImages([]); // Очищаєм масив зображень
       setError(null);
       try {
         const data = await fetchImages(query, page);
         setImages((prevImages) => [...prevImages, ...data.results]);
+        setTotalPages(data.total_pages);
         toast.success("Search completed successfully!"); //
       } catch (error) {
         console.log(error);
@@ -40,6 +46,7 @@ function App() {
     setQuery(newQuery);
     setPage(1);
     setImages([]);
+    setTotalPages(0);
   };
 
   const handleChangePage = () => {
@@ -52,8 +59,9 @@ function App() {
       {error && <ErrorMessage message={error} />}
       <Toaster />
       {loading && <Loader />}
-      <ImageGallery images={images} />
-      {!loading && images.length > 0 && (
+      <ImageGallery images={images} onOpen={openModal} />
+      {isOpen && <ImageModal onClose={closeModal} images={images} />}
+      {!loading && images.length > 0 && page < totalPages && (
         <LoadMoreBtn
           onClick={handleChangePage}
           isLoading={loading}

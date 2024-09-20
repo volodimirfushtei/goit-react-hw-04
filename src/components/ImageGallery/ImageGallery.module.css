@@ -14,3 +14,12 @@
     width: 10px;
   }
 }
+.ImageGallery_p {
+  font-size: 1.2em;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #ef4343;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}

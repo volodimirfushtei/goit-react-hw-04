@@ -10,3 +10,15 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
 };
+
+const ImageModal = ({ onClose, image }) => {
+  const { urls, alt_description } = image;
+  return (
+    <Modal style={customStyles}>
+      <img src={urls.regular} alt={alt_description} />
+      <button onClick={onClose}>ESC</button>
+    </Modal>
+  );
+};
+
+export default ImageModal;

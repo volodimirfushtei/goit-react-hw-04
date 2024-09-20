@@ -12,7 +12,7 @@ const LoadMoreBtn = ({ onClick, isLoading, haveImages }) => {
       setIsLoadingMore(false); // Скидаємо стан завантаження
     }, 2000);
   };
-  // Показуємо кнопку лише якщо є зображення
+  // Показуємо кнопку, якщо є зображення
   if (!haveImages > 0) {
     return null;
   }
