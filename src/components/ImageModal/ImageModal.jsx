@@ -51,9 +51,7 @@ const ImageModal = ({ modalIsOpen, closeModal, image }) => {
           <p className={s.ImageCard_author}>Автор: {image.user.name}</p>
         )}
         <p className={s.modal_likes}>Лайки: {image.likes}</p>
-
         <p className={s.modal_created}>Створено: {image.created_at}</p>
-        <p className={s.modal_downloads}>Завантажено: {image.downloads}</p>
       </div>
     </Modal>
   );
