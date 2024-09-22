@@ -68,7 +68,7 @@ function App() {
     <>
       <SearchBar onSubmit={handleFilterChange} />
       {error && <ErrorMessage message={error} />}
-      <p>Total:{totalPages}</p>
+      <p>Total pages:{totalPages}</p>
       <Toaster />
       {loading && <Loader />}
       <ImageGallery images={images} isOpen={openModal} />
