@@ -1,0 +1,62 @@
+.button_modalclose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #f8f5f5;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  &:hover {
+    color: #b1b0b6;
+    transition: color 0.3s ease;
+    transition: fill-opacity 0.3s ease;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
+  }
+  &:active {
+    color: #e0313f;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+.ImageModal {
+  background-color: rgba(60, 54, 54, 0.5);
+}
+.Items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+.modal_description {
+  font-size: var(--font-size-small);
+  color: #b1b0b6;
+  margin-top: 5px;
+  transition: color 0.3s ease;
+}
+.ImageCard_author {
+  font-size: var(--font-size-small);
+  color: #b1b0b6;
+  margin-top: 5px;
+  transition: color 0.3s ease;
+}
+.modal_likes {
+  font-size: var(--font-size-small);
+  color: #b1b0b6;
+  margin-top: 5px;
+  transition: color 0.3s ease;
+}
+.modal_created {
+  font-size: var(--font-size-small);
+  color: #b1b0b6;
+  margin-top: 5px;
+  transition: color 0.3s ease;
+}
