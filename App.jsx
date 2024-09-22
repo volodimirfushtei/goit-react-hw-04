@@ -20,6 +20,7 @@ function App() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [totalPhotos, setTotalPhotos] = useState(0);
 
   const openModal = (image) => {
     setSelectedImage(image);
@@ -42,6 +43,7 @@ function App() {
         const data = await fetchImages(query, page);
         setImages((prevImages) => [...prevImages, ...data.results]);
         setTotalPages(data.total_pages);
+        setTotalPhotos(data.total);
         toast.success("Search completed successfully!"); //
       } catch (error) {
         console.log(error);
@@ -74,12 +76,18 @@ function App() {
       setIsLoadingMore(false);
     }
   };
-
+  const total = {
+    fontSize: "14px",
+    color: "darkgrey",
+    margin: "10px 0",
+  };
   return (
     <>
       <SearchBar onSubmit={handleFilterChange} />
       {error && <ErrorMessage message={error} />}
-      <p>Total pages:{totalPages}</p>
+      <p style={total}>
+        Total pages:{totalPages} Total images:{totalPhotos}
+      </p>
       <Toaster />
       {loading && <Loader />}
       <ImageGallery images={images} openModal={openModal} />
