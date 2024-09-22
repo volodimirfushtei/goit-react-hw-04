@@ -1,28 +1,13 @@
 import s from "./ImageCard.module.css";
-import { useState } from "react";
-import Loader from "../Loader/Loader";
+
 const ImageCard = ({ image, openModal }) => {
   const { urls, alt_description } = image;
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-
-  const handleError = () => {
-    setHasError(true);
-  };
-
   return (
     <div className={s.ImageCard_container}>
-      {isLoading && (
-        <div className={s.loader}>
-          <Loader />
-        </div>
-      )}
       <img
         className={s.image}
-        src={hasError ? "/path/to/fallback-image.jpg" : urls.small} // Fallback image path
+        src={urls.small}
         alt={alt_description || "Image"}
-        onLoad={() => setIsLoading(false)}
-        onError={handleError}
         onClick={openModal}
         style={{ cursor: "pointer" }}
       />

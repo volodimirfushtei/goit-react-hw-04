@@ -19,6 +19,7 @@ function App() {
   const [totalPages, setTotalPages] = useState(0);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const openModal = (image) => {
     setSelectedImage(image);
@@ -61,7 +62,11 @@ function App() {
   };
 
   const handleChangePage = () => {
-    setPage((prev) => prev + 1);
+    if (page < totalPages) {
+      setIsLoadingMore(true);
+      setPage((prev) => prev + 1);
+      setIsLoadingMore(false);
+    }
   };
 
   return (
@@ -79,11 +84,11 @@ function App() {
           image={selectedImage}
         ></ImageModal>
       )}
-      {!loading && images.length > 0 && page < totalPages && (
+      {images.length > 0 && page < totalPages && (
         <LoadMoreBtn
           onClick={handleChangePage}
-          isLoading={loading}
           haveImages={images.length > 0}
+          isLoadingMore={isLoadingMore}
         />
       )}
     </>

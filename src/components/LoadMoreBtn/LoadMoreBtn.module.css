@@ -8,7 +8,7 @@
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  g:hover {
+  &:hover {
     background-color: #820610;
     color: white;
     transform: translateY(-1px);
@@ -23,7 +23,4 @@
   margin-top: 10px;
   width: 100%;
   margin-bottom: 10px;
-}
-.Loader {
-  background-color: #b7d0f6;
 }
