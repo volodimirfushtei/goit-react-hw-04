@@ -24,6 +24,7 @@ const ImageCard = ({ image, openModal }) => {
         onLoad={() => setIsLoading(false)}
         onError={handleError}
         onClick={openModal}
+        style={{ cursor: "pointer" }}
       />
       {alt_description && (
         <p className={s.ImageCard_description}>{alt_description}</p>

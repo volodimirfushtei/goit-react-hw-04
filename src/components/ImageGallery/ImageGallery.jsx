@@ -8,7 +8,7 @@ const ImageGallery = ({ images, openModal }) => {
         {images.length > 0 ? (
           images.map((image) => (
             <li key={image.id}>
-              <ImageCard image={image} onClick={openModal} />
+              <ImageCard image={image} openModal={() => openModal(image)} />
             </li>
           ))
         ) : (

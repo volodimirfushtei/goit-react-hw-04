@@ -1,22 +1,6 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  --color-background: #f5f5f5;
-  --color-text: #212121;
-  --color-border: #e0e0e0;
-  --spacing-small: 0.5rem;
-  --spacing-medium: 1rem;
-  --spacing-large: 2rem;
-  --shadow-small: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.1);
-  --transition-duration: 0.3s;
-  --transition-timing-function: ease;
-  --transition-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-property: background-color, color, transform;
-  --border-radius: 4px;
-  --font-size-small: 14px;
-  --font-size-medium: 16px;
-  --font-size-large: 20px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

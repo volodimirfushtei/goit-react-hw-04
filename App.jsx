@@ -17,7 +17,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
   const openModal = (image) => {
@@ -71,8 +71,14 @@ function App() {
       <p>Total pages:{totalPages}</p>
       <Toaster />
       {loading && <Loader />}
-      <ImageGallery images={images} isOpen={openModal} />
-      {isOpen && <ImageModal onClose={closeModal} image={selectedImage} />}
+      <ImageGallery images={images} openModal={openModal} />
+      {modalIsOpen && (
+        <ImageModal
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+          image={selectedImage}
+        ></ImageModal>
+      )}
       {!loading && images.length > 0 && page < totalPages && (
         <LoadMoreBtn
           onClick={handleChangePage}
