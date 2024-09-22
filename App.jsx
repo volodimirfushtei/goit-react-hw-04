@@ -61,10 +61,16 @@ function App() {
     setTotalPages(0);
   };
 
-  const handleChangePage = () => {
-    if (page < totalPages) {
-      setIsLoadingMore(true);
+  const handleChangePage = async () => {
+    setIsLoadingMore(true);
+
+    try {
+      await fetchImages(query, page + 1);
       setPage((prev) => prev + 1);
+    } catch (error) {
+      console.error("Error loading more images:", error);
+      toast.error("Error loading more images!");
+    } finally {
       setIsLoadingMore(false);
     }
   };
