@@ -1,7 +1,7 @@
 import s from "./ImageCard.module.css";
 import { useState } from "react";
 import Loader from "../Loader/Loader";
-const ImageCard = ({ image }) => {
+const ImageCard = ({ image, openModal }) => {
   const { urls, alt_description } = image;
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -23,7 +23,7 @@ const ImageCard = ({ image }) => {
         alt={alt_description || "Image"}
         onLoad={() => setIsLoading(false)}
         onError={handleError}
-        style={{ display: isLoading || hasError ? "none" : "block" }} // Hide image while loading or on error
+        onClick={openModal}
       />
       {alt_description && (
         <p className={s.ImageCard_description}>{alt_description}</p>

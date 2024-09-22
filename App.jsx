@@ -8,6 +8,8 @@ import Loader from "./src/components/Loader/Loader";
 import ErrorMessage from "./src/components/ErrorMessage/ErrorMessage";
 import { fetchImages } from "./src/servises/api.js";
 import ImageModal from "./src/components/ImageModal/ImageModal";
+
+import "./App.css";
 function App() {
   const [images, setImages] = useState([]);
   const [query, setQuery] = useState("");
@@ -16,8 +18,17 @@ function App() {
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const openModal = (image) => {
+    setSelectedImage(image);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setSelectedImage(null);
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -57,10 +68,11 @@ function App() {
     <>
       <SearchBar onSubmit={handleFilterChange} />
       {error && <ErrorMessage message={error} />}
+      <p>Total:{totalPages}</p>
       <Toaster />
       {loading && <Loader />}
-      <ImageGallery images={images} onOpen={openModal} />
-      {isOpen && <ImageModal onClose={closeModal} images={images} />}
+      <ImageGallery images={images} isOpen={openModal} />
+      {isOpen && <ImageModal onClose={closeModal} image={selectedImage} />}
       {!loading && images.length > 0 && page < totalPages && (
         <LoadMoreBtn
           onClick={handleChangePage}
