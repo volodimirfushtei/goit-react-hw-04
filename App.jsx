@@ -37,7 +37,7 @@ function App() {
       if (!query) return;
 
       setLoading(true);
-      setImages([]); // Очищаєм масив зображень
+      // Очищаєм масив зображень
       setError(null);
       try {
         const data = await fetchImages(query, page);
