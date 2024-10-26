@@ -58,7 +58,10 @@
 }
 .modal_created {
   font-size: var(--font-size-small);
-  color: #b1b0b6;
+  color: #f71e0b;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-top: 5px;
   transition: color 0.3s ease;
+  text-align: center;
+  cursor: pointer;
 }

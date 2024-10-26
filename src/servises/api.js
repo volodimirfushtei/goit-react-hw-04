@@ -13,7 +13,7 @@ export const fetchImages = async (query, page = 1) => {
         client_id: API_KEY,
       },
     });
-    return response.data; // Повертає тільки дані з відповіді
+    return response.data;
   } catch (error) {
     console.error("Error fetching images:", error);
     throw error;

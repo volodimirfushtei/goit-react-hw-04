@@ -1,6 +1,6 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
+  accent-color: var(#f3e188);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -17,6 +17,6 @@
 }
 @media screen {
   :root {
-    max-width: 375px;
+    min-width: 375px;
   }
 }

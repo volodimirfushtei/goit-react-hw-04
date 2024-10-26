@@ -7,7 +7,8 @@
   justify-content: start;
   min-height: 100vh;
   padding: 0;
-  background-color: #b7d0f6;
+  background-color: #cfd6e1;
+  accent-color: var(#52627a);
   color: #2f1a1a;
   box-sizing: border-box;
   font-size: 16px;
